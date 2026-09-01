@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>DocMaker Store</title>
+  <script>
+    (function loadStoreStyles() {
+      const assetStamp = Date.now();
+      window.__docmakerAssetStamp = assetStamp;
+      const stylesheet = document.createElement("link");
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = `style.css?dev=${assetStamp}`;
+      document.head.appendChild(stylesheet);
+    })();
+  </script>
+</head>
+<body>
+  <nav class="navbar" id="storeNavbar">
+    <div class="nav-shell">
+      <a href="index.html" class="logo">DocMaker</a>
+
+      <div class="search-group">
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            class="glow-effect"
+            placeholder="Search products, categories, or deals"
+            autocomplete="off">
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+
+        <button type="button" id="searchButton" class="glow-effect">
+          Search
+        </button>
+
+        <div class="custom-dropdown">
+          <button
+            type="button"
+            class="dropdown-selected glow-effect"
+            id="categoryDropdownTrigger">
+            All Categories
+          </button>
+          <div class="dropdown-options" id="dropdownOptions"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="storefront-main">
+    <section class="hero" id="heroBanner">
+      <div class="hero-media" id="heroMedia"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 id="heroTitle">Welcome to DocMaker Store</h1>
+        <p id="heroSubtitle">Best Deals. Best Prices.</p>
+      </div>
+    </section>
+
+    <section class="store-section">
+      <div class="section-heading">
+        <h2>JUST IN</h2>
+      </div>
+      <div id="featured" class="grid"></div>
+    </section>
+
+    <section class="shop-category-section">
+      <div class="section-heading section-heading-compact">
+        <h2>SHOP BY CATEGORY</h2>
+      </div>
+      <div id="shopCategoryList" class="shop-category-list"></div>
+    </section>
+
+    <section class="store-section store-products-section">
+      <div class="section-heading">
+        <h2 id="productsSectionTitle">ALL PRODUCTS</h2>
+      </div>
+
+      <div class="product-toolbar">
+        <div class="toolbar-group">
+          <label class="toolbar-control">
+            <span>Sort</span>
+            <select id="sortSelect">
+              <option value="latest">Latest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating-high">Top Rated</option>
+              <option value="name-az">Name: A to Z</option>
+            </select>
+          </label>
+
+          <label class="toolbar-control">
+            <span>Minimum Rating</span>
+            <select id="ratingFilter">
+              <option value="0">All Ratings</option>
+              <option value="5">5 Stars</option>
+              <option value="4">4 Stars & Up</option>
+              <option value="3">3 Stars & Up</option>
+              <option value="2">2 Stars & Up</option>
+              <option value="1">1 Star & Up</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="toolbar-actions">
+          <span class="product-count" id="productCountText">0 products</span>
+          <button type="button" class="toolbar-clear" id="clearFiltersBtn">Clear</button>
+        </div>
+      </div>
+
+      <div id="products" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-shell">
+      <div class="footer-panel">
+        <div class="footer-background-lines" aria-hidden="true"></div>
+
+        <div class="footer-grid">
+          <div class="footer-brand-column">
+            <img src="assets/docmaker-footer-logo.png" alt="DocMaker logo" class="footer-logo">
+
+            <p class="footer-tagline">Discover • Compare • Shop Smarter</p>
+
+            <p class="footer-description">
+              DocMaker is a modern affiliate product discovery platform that helps users explore trending products,
+              compare deals, and shop smarter through trusted marketplaces like Amazon.
+            </p>
+
+            <div class="footer-disclaimer">
+              <h3>Affiliate Disclaimer:</h3>
+              <p>
+                DocMaker participates in affiliate programs and may earn commissions from qualifying purchases
+                through affiliate links.
+              </p>
+            </div>
+
+            <a href="#storeNavbar" class="footer-back-to-top">Back to top</a>
+          </div>
+
+          <div class="footer-links-column">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#legalModalOverlay" data-legal-doc="privacy-policy">
+                  <span class="footer-link-icon" aria-hidden="true">&#128274;</span>
+                  <span>Privacy Policy</span>
+                </a>
+              </li>
+              <li>
+                <a href="#legalModalOverlay" data-legal-doc="terms-of-services">
+                  <span class="footer-link-icon" aria-hidden="true">&#9878;</span>
+                  <span>Terms of Services</span>
+                </a>
+              </li>
+              <li>
+                <a href="#legalModalOverlay" data-legal-doc="affiliate-disclaimer">
+                  <span class="footer-link-icon" aria-hidden="true">&#128188;</span>
+                  <span>Affiliate Disclaimer</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <p>&copy; 2026 DocMaker. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="legal-modal-overlay" id="legalModalOverlay" hidden>
+    <div class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+      <div class="legal-modal-header">
+        <div class="legal-modal-copy">
+          <p class="legal-modal-kicker">Legal Content</p>
+          <h3 class="legal-modal-title" id="legalModalTitle">Privacy Policy</h3>
+          <p class="legal-modal-date" id="legalModalDate">Last Updated: May 2026</p>
+        </div>
+        <button type="button" class="legal-modal-close" data-close-legal-modal>Close</button>
+      </div>
+      <div class="legal-modal-body" id="legalModalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    (function loadStoreScript() {
+      const script = document.createElement("script");
+      script.src = `script.js?dev=${window.__docmakerAssetStamp || Date.now()}`;
+      document.body.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
